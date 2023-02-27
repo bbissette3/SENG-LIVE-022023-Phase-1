@@ -47,6 +47,15 @@
       "user": "Alice",
       "characterId": 2,
       "content": "I love Ivysaur more!"
+    },
+    {
+      "content": "new comment",
+      "id": 3
+    },
+    {
+      "content": "new comment",
+      "characterId": "1",
+      "id": 4
     }
   ]
 }

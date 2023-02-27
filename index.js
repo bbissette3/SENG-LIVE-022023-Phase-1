@@ -25,6 +25,19 @@ const createPokemon = (e) => {
   };
 
   // Make a POST request to persist the new character
+  //metch can take a method arg('POST')
+  //needs to have something called headers
+  //body: information to be sent to the server
+ 
+  const configObj = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',      
+    },
+    body: JSON.stringify(newChar)
+  }
+
+  fetch('http://localhost:3000/characters', configObj)
 
   renderPokemon(newChar);
   pokeForm.reset();
@@ -62,6 +75,27 @@ const commentsForm = () => {
   let submit = document.createElement("input");
   submit.type = "submit";
   submit.id = "submit";
+
+  //fetch to comments here
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const pokeId = document.querySelector('#poke-show-card').dataset.id
+
+    const configObj = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',      
+      },
+      body: JSON.stringify({
+        content: commentInput.value,
+        characterId: pokeId
+      }),
+    }
+  
+    fetch('http://localhost:3000/comments', configObj)
+  })
+
 
   form.append(commentInput, submit);
 
